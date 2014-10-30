@@ -1,0 +1,12 @@
+D:\Program Files\;TYZ VFKMWTDF\MuzInst\MuzInst\obj\x86\Debug\MuzInst.DeveloperForm.resources
+D:\Program Files\;TYZ VFKMWTDF\MuzInst\MuzInst\obj\x86\Debug\MuzInst.Form1.resources
+D:\Program Files\;TYZ VFKMWTDF\MuzInst\MuzInst\obj\x86\Debug\MuzInst.Properties.Resources.resources
+D:\Program Files\;TYZ VFKMWTDF\MuzInst\MuzInst\obj\x86\Debug\MuzInst.UserForm.resources
+D:\Program Files\;TYZ VFKMWTDF\MuzInst\MuzInst\bin\Debug\MuzInst.exe
+D:\Program Files\;TYZ VFKMWTDF\MuzInst\MuzInst\bin\Debug\MuzInst.pdb
+D:\Program Files\;TYZ VFKMWTDF\MuzInst\MuzInst\obj\x86\Debug\MuzInst.exe
+D:\Program Files\;TYZ VFKMWTDF\MuzInst\MuzInst\obj\x86\Debug\MuzInst.pdb
+D:\Program Files\;TYZ VFKMWTDF\MuzInst\MuzInst\obj\x86\Debug\MuzInst.csprojResolveAssemblyReference.cache
+D:\Program Files\;TYZ VFKMWTDF\MuzInst\MuzInst\obj\x86\Debug\MuzInst.csproj.GenerateResource.Cache
+D:\Program Files\;TYZ VFKMWTDF\jhbj\MuzInst\obj\x86\Debug\MuzInst.exe
+D:\Program Files\;TYZ VFKMWTDF\jhbj\MuzInst\obj\x86\Debug\MuzInst.pdb
