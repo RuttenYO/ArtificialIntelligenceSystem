@@ -18,7 +18,6 @@ namespace MuzInst
             inquirer = new Inquirer();
             InitializeComponent();
             getQuestionFromFile();
-            
         }
 
         public void getQuestionFromFile()

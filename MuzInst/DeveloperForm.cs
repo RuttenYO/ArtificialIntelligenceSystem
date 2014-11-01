@@ -34,15 +34,11 @@ namespace MuzInst
         }
 
 
-        public void putQuestionToFile(string question)
-        {
-
-        }
-
         public void putAnswerToFile(string answer)
         {
 
         }
+        
         private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e) //подтягивает ответы на выбранный вопрос
         {
             listBox1.Items.Clear();
@@ -80,11 +76,6 @@ namespace MuzInst
             comboBox1.SelectedIndex = comboBox1.Items.Count-1;
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         public void getQuestionFromFile()
         {
             using (System.IO.StreamReader file = new System.IO.StreamReader(@".\QUIZ.db", true))
@@ -109,17 +100,9 @@ namespace MuzInst
             }
         }
 
- /*       public void printVectorToFile()
-        {
-            using (System.IO.StreamWriter file = new System.IO.StreamWriter(@".\QUIZ.db", true))
-            {
-                for (int i = 0; i < list.Count; i++) file.Write(list.ElementAt(i) + " ");
-                file.WriteLine();
-            }
-        }*/
-
         private void button5_Click(object sender, EventArgs e)
         {
+            inquirer.saveQuestionsToFile();
             Form1 form1 = new Form1();
             this.Hide();
             form1.Show();
@@ -155,6 +138,7 @@ namespace MuzInst
             {
                 MessageBox.Show("Уже существует такой элемент!");
             }
+            textBox2.Clear();
         }
 
     }
