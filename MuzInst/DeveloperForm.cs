@@ -32,13 +32,7 @@ namespace MuzInst
             }
             listBox1.Items.Clear();
         }
-
-
-        public void putAnswerToFile(string answer)
-        {
-
-        }
-        
+     
         private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e) //подтягивает ответы на выбранный вопрос
         {
             listBox1.Items.Clear();
