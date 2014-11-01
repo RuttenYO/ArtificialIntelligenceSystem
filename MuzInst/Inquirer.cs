@@ -5,35 +5,51 @@ using System.Text;
 
 namespace MuzInst
 {
+    public class Question
+    {
+        public string title;
+        public string variableName;
+        public List<string> answers;
+        public Question()
+        {
+            answers = new List<string>();
+        }
+    }        
+
     public class Inquirer
     {
 
-        List<List<string>> list;
-
+//        List<List<string>> list;
+        List<Question> questions;
         int c;
 
-         public Inquirer()
+        public Inquirer()
         {
-            list = new List<List<string>>();//инициализация списка
+            questions = new List<Question>();
             c = 0;
         }
 
         public void addQuestion(List<string> q)
         {
-            list.Add(q);
+            Question tempQuestion = new Question();
+            tempQuestion.title = q.ElementAt(0);
+            tempQuestion.variableName = q.ElementAt(1);
+            for (int i = 2; i < q.Count; i++)
+                tempQuestion.answers.Add(q.ElementAt(i));
+            questions.Add(tempQuestion);
         }
 
-        public List<string> getQuestion()//возвращает список вопросов
+        public Question getQuestion()
         {
-            List<string> result;
-            if (c == list.Count) result = null;
-            else result = list.ElementAt(c++);
+            Question result;
+            if (c == questions.Count) result = null;
+            else result = questions.ElementAt(c++);
             return result;
         }
 
-        public List<string> getQuestionAtIndex(int index)//возвращает один вопрос
+        public Question getQuestionAtIndex(int index)//возвращает один вопрос
         {
-            if (index < list.Count) return list.ElementAt(index);
+            if (index < questions.Count) return questions.ElementAt(index);
             return null;
         }
 
@@ -44,17 +60,17 @@ namespace MuzInst
 
         public void addAnswerForQuestion(int index, string answer)
         {
-            List<string> tempQ = list.ElementAt(index);
-            tempQ.Add(answer);
+            Question tempQ = questions.ElementAt(index);
+            tempQ.answers.Add(answer);
         }
         
 
-        public bool deleteAnswerForQuestion(List<string> question, string answer)
+        public bool deleteAnswerForQuestion(Question question, string answer)
         {
-            if (question.Contains(answer))
+            if (question.answers.Contains(answer))
             {
-                int i = question.FindIndex((elem) => elem == answer);
-                question.RemoveAt(i);
+                int i = question.answers.FindIndex((elem) => elem == answer);
+                question.answers.RemoveAt(i);
                 return true;
             }
             else return false;
@@ -62,13 +78,13 @@ namespace MuzInst
 
         public void deleteQuestion(int index)
         {
-            if (index < list.Count)
-                list.RemoveAt(index);
+            if (index < questions.Count)
+                questions.RemoveAt(index);
         }
 
         public int getCountOfQuestions()
         {
-            return list.Count;
+            return questions.Count;
         }
     
     }

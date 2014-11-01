@@ -19,7 +19,8 @@ namespace MuzInst
             InitializeComponent();
             getQuestionFromFile();
             showQuestionsToCombobox();
-
+            label1.Text = "";
+            comboBox1.SelectedIndex = 0;
         }
 
         public void showQuestionsToCombobox()
@@ -27,8 +28,9 @@ namespace MuzInst
             comboBox1.Items.Clear();
             for (int i = 0; i < inquirer.getCountOfQuestions(); i++)
             {
-                comboBox1.Items.Add(inquirer.getQuestionAtIndex(i).ElementAt(0));
+                comboBox1.Items.Add(inquirer.getQuestionAtIndex(i).title);
             }
+            listBox1.Items.Clear();
         }
 
 
@@ -44,23 +46,27 @@ namespace MuzInst
         private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e) //подтягивает ответы на выбранный вопрос
         {
             listBox1.Items.Clear();
-            List<string> tempQ = inquirer.getQuestionAtIndex(comboBox1.SelectedIndex);
+            Question tempQ = inquirer.getQuestionAtIndex(comboBox1.SelectedIndex);
 
-            for (int i = 1; i < tempQ.Count; i++)
+            label1.Text = tempQ.variableName;
+
+            for (int i = 0; i < tempQ.answers.Count; i++)
             {
-                listBox1.Items.Add(tempQ.ElementAt(i));
+                listBox1.Items.Add(tempQ.answers.ElementAt(i));
             }
         }
 
         public void updateListBoxOfAnswers(int index)//обновляет листбокс во всех ситуациях
         {
-            List<string> tempQ = inquirer.getQuestionAtIndex(index);
+            Question tempQ = inquirer.getQuestionAtIndex(index);
+
+            label1.Text = tempQ.variableName;
 
             listBox1.Items.Clear();
 
-            for (int i = 1; i < tempQ.Count; i++)
+            for (int i = 0; i < tempQ.answers.Count; i++)
             {
-                listBox1.Items.Add(tempQ.ElementAt(i));
+                listBox1.Items.Add(tempQ.answers.ElementAt(i));
             }
         }
 
@@ -68,8 +74,10 @@ namespace MuzInst
         {
             List<string> tempQ = new List<string>();
             tempQ.Add(textBox1.Text);
+            tempQ.Add(textBox3.Text);
             inquirer.addQuestion(tempQ);
             showQuestionsToCombobox();
+            comboBox1.SelectedIndex = comboBox1.Items.Count-1;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -119,16 +127,17 @@ namespace MuzInst
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            inquirer.deleteQuestion(comboBox1.SelectedIndex);
+            showQuestionsToCombobox();
+            comboBox1.SelectedIndex = 0;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            List<string> tempList;
-            tempList = inquirer.getQuestion();
+            Question tempQ = inquirer.getQuestionAtIndex(comboBox1.SelectedIndex);
             string answer = listBox1.Items[listBox1.SelectedIndex].ToString();
-            inquirer.deleteAnswerForQuestion(tempList, answer);
-            updateListBoxOfAnswers(listBox1.SelectedIndex-1);
+            inquirer.deleteAnswerForQuestion(tempQ, answer);
+            updateListBoxOfAnswers(comboBox1.SelectedIndex);
         }
 
         private void button2_Click_1(object sender, EventArgs e)
@@ -136,15 +145,15 @@ namespace MuzInst
             int tempIndex = comboBox1.SelectedIndex;
             string tempAnsw = textBox2.Text;
 
-            List<string> tempQ = inquirer.getQuestionAtIndex(tempIndex);
-            if (!tempQ.Contains(tempAnsw))
+            Question tempQ = inquirer.getQuestionAtIndex(tempIndex);
+            if (!tempQ.answers.Contains(tempAnsw))
             {
                 inquirer.addAnswerForQuestion(tempIndex, tempAnsw);
                 updateListBoxOfAnswers(tempIndex);
             }
             else
             {
-                MessageBox.Show("Уже существует такой элемнт!");
+                MessageBox.Show("Уже существует такой элемент!");
             }
         }
 

@@ -47,13 +47,12 @@ namespace MuzInst
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            List<string> tempList;
             comboBox1.Items.Clear();
-            tempList = inquirer.getQuestion();
-            label1.Text = tempList.ElementAt(0);
-            for (int i = 1; i < tempList.Count; i++)
-                comboBox1.Items.Add(tempList.ElementAt(i));
-            comboBox1.Text = tempList.ElementAt(1);
+            Question tempQ = inquirer.getQuestion();
+            label1.Text = tempQ.title;
+            for (int i = 0; i < tempQ.answers.Count; i++)
+                comboBox1.Items.Add(tempQ.answers.ElementAt(i));
+            comboBox1.Text = tempQ.answers.ElementAt(1);
         }
 
         private void button1_Click(object sender, EventArgs e)
