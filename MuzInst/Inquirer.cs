@@ -18,8 +18,6 @@ namespace MuzInst
 
     public class Inquirer
     {
-
-//        List<List<string>> list;
         List<Question> questions;
         int c;
 
