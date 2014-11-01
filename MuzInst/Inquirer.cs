@@ -86,6 +86,23 @@ namespace MuzInst
         {
             return questions.Count;
         }
+
+        public void saveQuestionsToFile()
+        {
+            System.IO.File.WriteAllText(@".\QUIZ.db", string.Empty);
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(@".\QUIZ.db", true))
+            {
+                for (int i = 0; i < this.getCountOfQuestions(); i++)
+                {
+                    Question tempQ = this.getQuestionAtIndex(i);
+                    file.WriteLine(tempQ.title);
+                    file.WriteLine(tempQ.variableName);
+                    for (int j = 0; j < tempQ.answers.Count; j++)
+                        file.WriteLine(tempQ.answers.ElementAt(j));
+                    file.WriteLine("=====");
+                }
+            }
+        }
     
     }
 }
