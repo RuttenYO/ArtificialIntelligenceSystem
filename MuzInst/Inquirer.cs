@@ -103,4 +103,29 @@ namespace MuzInst
         }
     
     }
+
+    public class Rule
+    {
+        public struct RuleStruct
+        {
+            public string variable;
+            public string value;
+        }
+        public List<RuleStruct> conditions;
+        public RuleStruct result;
+        public Rule()
+        {
+            conditions = new List<RuleStruct>();
+        }
+        public void buildRuleStructWithInqurer(Inquirer inquirer)
+        {
+            for (int i = 0; i < inquirer.getCountOfQuestions(); i++)
+            {
+                Question q = inquirer.getQuestionAtIndex(i);
+                RuleStruct r = new RuleStruct();
+                r.variable = q.variableName;
+                conditions.Add(r);
+            }
+        }
+    }
 }
