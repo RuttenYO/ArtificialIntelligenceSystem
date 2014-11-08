@@ -30,10 +30,10 @@ namespace MuzInst
         public void addQuestion(List<string> q)
         {
             Question tempQuestion = new Question();
-            tempQuestion.title = q.ElementAt(0);
-            tempQuestion.variableName = q.ElementAt(1);
+            tempQuestion.title = q[0];
+            tempQuestion.variableName = q[1];
             for (int i = 2; i < q.Count; i++)
-                tempQuestion.answers.Add(q.ElementAt(i));
+                tempQuestion.answers.Add(q[i]);
             questions.Add(tempQuestion);
         }
 
@@ -41,13 +41,13 @@ namespace MuzInst
         {
             Question result;
             if (c == questions.Count) result = null;
-            else result = questions.ElementAt(c++);
+            else result = questions[c++];
             return result;
         }
 
         public Question getQuestionAtIndex(int index)//возвращает один вопрос
         {
-            if (index < questions.Count) return questions.ElementAt(index);
+            if (index < questions.Count) return questions[index];
             return null;
         }
 
@@ -58,7 +58,7 @@ namespace MuzInst
 
         public void addAnswerForQuestion(int index, string answer)
         {
-            Question tempQ = questions.ElementAt(index);
+            Question tempQ = questions[index];
             tempQ.answers.Add(answer);
         } 
 
@@ -119,7 +119,7 @@ namespace MuzInst
                     file.WriteLine(tempQ.title);
                     file.WriteLine(tempQ.variableName);
                     for (int j = 0; j < tempQ.answers.Count; j++)
-                        file.WriteLine(tempQ.answers.ElementAt(j));
+                        file.WriteLine(tempQ.answers[j]);
                     file.WriteLine("=====");
                 }
             }

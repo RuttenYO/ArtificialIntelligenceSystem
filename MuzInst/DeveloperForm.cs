@@ -46,7 +46,7 @@ namespace MuzInst
 
             for (int i = 0; i < tempQ.answers.Count; i++)
             {
-                listBox1.Items.Add(tempQ.answers.ElementAt(i));
+                listBox1.Items.Add(tempQ.answers[i]);
             }
         }
 
@@ -60,7 +60,7 @@ namespace MuzInst
 
             for (int i = 0; i < tempQ.answers.Count; i++)
             {
-                listBox1.Items.Add(tempQ.answers.ElementAt(i));
+                listBox1.Items.Add(tempQ.answers[i]);
             }
         }
 
@@ -176,7 +176,7 @@ namespace MuzInst
 
             for (int i = 0; i < tempQ.answers.Count; i++)
             {
-                value1ComboBox.Items.Add(tempQ.answers.ElementAt(i));
+                value1ComboBox.Items.Add(tempQ.answers[i]);
             }
             value1ComboBox.SelectedIndex = 0;
         }
@@ -193,7 +193,7 @@ namespace MuzInst
                
                 for (int i = 0; i < tempQ.answers.Count; i++)
                 {
-                    value2ComboBox.Items.Add(tempQ.answers.ElementAt(i));
+                    value2ComboBox.Items.Add(tempQ.answers[i]);
                 }
                 value2ComboBox.SelectedIndex = 0;
             }
@@ -214,7 +214,7 @@ namespace MuzInst
 
             for (int i = 0; i < tempQ.answers.Count; i++)
             {
-                resultValueComboBox.Items.Add(tempQ.answers.ElementAt(i));
+                resultValueComboBox.Items.Add(tempQ.answers[i]);
             }
             resultValueComboBox.SelectedIndex = 0;
         }
