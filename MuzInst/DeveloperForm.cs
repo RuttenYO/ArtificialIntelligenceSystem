@@ -162,6 +162,14 @@ namespace MuzInst
             }
             variable2ComboBox.Items.Add("НЕ ИСПОЛЬЗОВАТЬ");
             variable2ComboBox.SelectedIndex = 0;
+
+            for (int i = 0; i < inquirer.getCountOfQuestions(); i++)
+            {
+                q = inquirer.getQuestionAtIndex(i);
+                resultVariableComboBox.Items.Add(q.variableName);
+            }
+            resultVariableComboBox.SelectedIndex = 0;
+
         }
 
         private void addRuleButton_Click(object sender, EventArgs e)
@@ -182,11 +190,6 @@ namespace MuzInst
             value1ComboBox.SelectedIndex = 0;
         }
 
-        private void value2ComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
- 
-        }
-
         private void variable2ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             value2ComboBox.Items.Clear();
@@ -205,6 +208,25 @@ namespace MuzInst
             }
            
             
+        }
+
+        private void DeveloperForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void resultVariableComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            Question tempQ = inquirer.getQuestionAtIndex(resultVariableComboBox.SelectedIndex);
+            
+            resultValueComboBox.Items.Clear();
+
+            for (int i = 0; i < tempQ.answers.Count; i++)
+            {
+                resultValueComboBox.Items.Add(tempQ.answers.ElementAt(i));
+            }
+            resultValueComboBox.SelectedIndex = 0;
         }
 
     }

@@ -41,22 +41,22 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.variable1ComboBox = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.value1ComboBox = new System.Windows.Forms.ComboBox();
-            this.logicComboBox = new System.Windows.Forms.ComboBox();
+            this.resultValueComboBox = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.resultVariableComboBox = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.value2ComboBox = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.variable2ComboBox = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.resultVariableComboBox = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.resultValueComboBox = new System.Windows.Forms.ComboBox();
+            this.logicComboBox = new System.Windows.Forms.ComboBox();
+            this.value1ComboBox = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.variable1ComboBox = new System.Windows.Forms.ComboBox();
             this.addRuleButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -188,14 +188,14 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Добавление";
             // 
-            // label2
+            // label4
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 31);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
-            this.label2.TabIndex = 19;
-            this.label2.Text = "Вопрос";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(9, 92);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(37, 13);
+            this.label4.TabIndex = 21;
+            this.label4.Text = "Ответ";
             // 
             // label3
             // 
@@ -206,14 +206,14 @@
             this.label3.TabIndex = 20;
             this.label3.Text = "Переменная вопроса";
             // 
-            // label4
+            // label2
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 92);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(37, 13);
-            this.label4.TabIndex = 21;
-            this.label4.Text = "Ответ";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 31);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(44, 13);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "Вопрос";
             // 
             // label5
             // 
@@ -246,40 +246,42 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Редактор Правил";
             // 
-            // variable1ComboBox
+            // resultValueComboBox
             // 
-            this.variable1ComboBox.FormattingEnabled = true;
-            this.variable1ComboBox.Location = new System.Drawing.Point(49, 36);
-            this.variable1ComboBox.Name = "variable1ComboBox";
-            this.variable1ComboBox.Size = new System.Drawing.Size(74, 21);
-            this.variable1ComboBox.TabIndex = 22;
-            this.variable1ComboBox.SelectedIndexChanged += new System.EventHandler(this.variable1ComboBox_SelectedIndexChanged);
+            this.resultValueComboBox.FormattingEnabled = true;
+            this.resultValueComboBox.Location = new System.Drawing.Point(638, 36);
+            this.resultValueComboBox.Name = "resultValueComboBox";
+            this.resultValueComboBox.Size = new System.Drawing.Size(74, 21);
+            this.resultValueComboBox.TabIndex = 33;
             // 
-            // label6
+            // label9
             // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label6.Location = new System.Drawing.Point(129, 39);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(13, 13);
-            this.label6.TabIndex = 23;
-            this.label6.Text = "=";
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label9.Location = new System.Drawing.Point(619, 39);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(13, 13);
+            this.label9.TabIndex = 32;
+            this.label9.Text = "=";
             // 
-            // value1ComboBox
+            // resultVariableComboBox
             // 
-            this.value1ComboBox.FormattingEnabled = true;
-            this.value1ComboBox.Location = new System.Drawing.Point(148, 36);
-            this.value1ComboBox.Name = "value1ComboBox";
-            this.value1ComboBox.Size = new System.Drawing.Size(74, 21);
-            this.value1ComboBox.TabIndex = 24;
+            this.resultVariableComboBox.FormattingEnabled = true;
+            this.resultVariableComboBox.Location = new System.Drawing.Point(539, 36);
+            this.resultVariableComboBox.Name = "resultVariableComboBox";
+            this.resultVariableComboBox.Size = new System.Drawing.Size(74, 21);
+            this.resultVariableComboBox.TabIndex = 31;
+            this.resultVariableComboBox.SelectedIndexChanged += new System.EventHandler(this.resultVariableComboBox_SelectedIndexChanged);
             // 
-            // logicComboBox
+            // label8
             // 
-            this.logicComboBox.FormattingEnabled = true;
-            this.logicComboBox.Location = new System.Drawing.Point(234, 36);
-            this.logicComboBox.Name = "logicComboBox";
-            this.logicComboBox.Size = new System.Drawing.Size(74, 21);
-            this.logicComboBox.TabIndex = 25;
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label8.Location = new System.Drawing.Point(511, 39);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(22, 13);
+            this.label8.TabIndex = 30;
+            this.label8.Text = "ТО";
             // 
             // value2ComboBox
             // 
@@ -288,7 +290,6 @@
             this.value2ComboBox.Name = "value2ComboBox";
             this.value2ComboBox.Size = new System.Drawing.Size(74, 21);
             this.value2ComboBox.TabIndex = 29;
-            this.value2ComboBox.SelectedIndexChanged += new System.EventHandler(this.value2ComboBox_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -309,41 +310,40 @@
             this.variable2ComboBox.TabIndex = 27;
             this.variable2ComboBox.SelectedIndexChanged += new System.EventHandler(this.variable2ComboBox_SelectedIndexChanged);
             // 
-            // label8
+            // logicComboBox
             // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label8.Location = new System.Drawing.Point(511, 39);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(22, 13);
-            this.label8.TabIndex = 30;
-            this.label8.Text = "ТО";
+            this.logicComboBox.FormattingEnabled = true;
+            this.logicComboBox.Location = new System.Drawing.Point(234, 36);
+            this.logicComboBox.Name = "logicComboBox";
+            this.logicComboBox.Size = new System.Drawing.Size(74, 21);
+            this.logicComboBox.TabIndex = 25;
             // 
-            // resultVariableComboBox
+            // value1ComboBox
             // 
-            this.resultVariableComboBox.FormattingEnabled = true;
-            this.resultVariableComboBox.Location = new System.Drawing.Point(539, 36);
-            this.resultVariableComboBox.Name = "resultVariableComboBox";
-            this.resultVariableComboBox.Size = new System.Drawing.Size(74, 21);
-            this.resultVariableComboBox.TabIndex = 31;
+            this.value1ComboBox.FormattingEnabled = true;
+            this.value1ComboBox.Location = new System.Drawing.Point(148, 36);
+            this.value1ComboBox.Name = "value1ComboBox";
+            this.value1ComboBox.Size = new System.Drawing.Size(74, 21);
+            this.value1ComboBox.TabIndex = 24;
             // 
-            // label9
+            // label6
             // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label9.Location = new System.Drawing.Point(619, 39);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(13, 13);
-            this.label9.TabIndex = 32;
-            this.label9.Text = "=";
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label6.Location = new System.Drawing.Point(129, 39);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(13, 13);
+            this.label6.TabIndex = 23;
+            this.label6.Text = "=";
             // 
-            // resultValueComboBox
+            // variable1ComboBox
             // 
-            this.resultValueComboBox.FormattingEnabled = true;
-            this.resultValueComboBox.Location = new System.Drawing.Point(638, 36);
-            this.resultValueComboBox.Name = "resultValueComboBox";
-            this.resultValueComboBox.Size = new System.Drawing.Size(74, 21);
-            this.resultValueComboBox.TabIndex = 33;
+            this.variable1ComboBox.FormattingEnabled = true;
+            this.variable1ComboBox.Location = new System.Drawing.Point(49, 36);
+            this.variable1ComboBox.Name = "variable1ComboBox";
+            this.variable1ComboBox.Size = new System.Drawing.Size(74, 21);
+            this.variable1ComboBox.TabIndex = 22;
+            this.variable1ComboBox.SelectedIndexChanged += new System.EventHandler(this.variable1ComboBox_SelectedIndexChanged);
             // 
             // addRuleButton
             // 
@@ -370,6 +370,7 @@
             this.Controls.Add(this.comboBox1);
             this.Name = "DeveloperForm";
             this.Text = "DeveloperForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DeveloperForm_FormClosed);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
