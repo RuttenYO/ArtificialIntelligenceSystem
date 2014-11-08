@@ -13,30 +13,53 @@ namespace MuzInst
     {
         Inquirer inquirer;
 
+        List<RuleStruct> answers;
+
+        Question currentQuestion;
+
         public UserForm()
         {
             inquirer = new Inquirer();
             InitializeComponent();
             inquirer.getQuestionsFromFile();
 
+            answers = new List<RuleStruct>();
+
             nextQuestionAction(); 
         }
 
         public void nextQuestionAction()
         {
-            Question tempQ = inquirer.getQuestion();
-            if (tempQ!=null)
+            currentQuestion = inquirer.getQuestion();
+
+            if (currentQuestion != null)
             {
                 comboBox1.Items.Clear();
-                label1.Text = tempQ.title;
-                for (int i = 0; i < tempQ.answers.Count; i++)
-                    comboBox1.Items.Add(tempQ.answers[i]);
+                label1.Text = currentQuestion.title;
+                for (int i = 0; i < currentQuestion.answers.Count; i++)
+                    comboBox1.Items.Add(currentQuestion.answers[i]);
                 comboBox1.SelectedIndex = 0;
             }
         }
-  
+
+
+        private void answerLastQuestion()
+        {
+            if (currentQuestion != null)
+            {
+                RuleStruct answer = new RuleStruct();
+
+                answer.variable = currentQuestion.variableName;
+                answer.value = comboBox1.SelectedItem.ToString();
+
+                answers.Add(answer);
+            }
+        }
+
         private void button2_Click_1(object sender, EventArgs e)
         {
+            answerLastQuestion();
+
             nextQuestionAction();
         }
 

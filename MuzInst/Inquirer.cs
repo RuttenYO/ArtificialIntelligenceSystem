@@ -125,14 +125,16 @@ namespace MuzInst
             }
         } 
     }
+    
+    public struct RuleStruct
+    {
+        public string variable;
+        public string value;
+    }
 
     public class Rule
     {
-        public struct RuleStruct
-        {
-            public string variable;
-            public string value;
-        }
+
         public List<RuleStruct> conditions;
         public RuleStruct result;
         public string logicalValue;
