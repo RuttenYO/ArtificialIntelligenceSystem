@@ -113,9 +113,11 @@ namespace MuzInst
         }
         public List<RuleStruct> conditions;
         public RuleStruct result;
-        public Rule()
+        public string logicalValue;
+        public Rule(Inquirer inquirer)
         {
             conditions = new List<RuleStruct>();
+            buildRuleStructWithInqurer(inquirer);
         }
         public void buildRuleStructWithInqurer(Inquirer inquirer)
         {
@@ -125,6 +127,76 @@ namespace MuzInst
                 RuleStruct r = new RuleStruct();
                 r.variable = q.variableName;
                 conditions.Add(r);
+            }
+        }
+        public void addValueForVariable(string variable, string value)
+        {
+            for (int i = 0; i < conditions.Count; i++)
+            {
+                if (String.Equals(conditions[i].variable, variable))
+                {
+                    RuleStruct tempRuleStruct = new RuleStruct();
+                    tempRuleStruct.variable = variable;
+                    tempRuleStruct.value = value;
+                    conditions[i] = tempRuleStruct;
+                }
+            }
+        }
+        public void addResult(string variable, string value)
+        {
+            result.variable = variable;
+            result.value = value;
+        }
+        public void addLogical(string value)
+        {
+            logicalValue = value;
+        }
+    }
+
+    public class RuleProcessor
+    {
+        List<Rule> rules;
+        public RuleProcessor()
+        {
+            rules = new List<Rule>();
+        }
+        public void AddRule(Rule rule)
+        {
+            rules.Add(rule);
+        }
+
+        public void saveRulesToFile()
+        {
+            System.IO.File.WriteAllText(@".\Rules.db", string.Empty);
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(@".\Rules.db", true))
+            {
+                for (int i = 0; i < rules.Count; i++)
+                {
+                    Rule tempRule = rules[i];
+
+                    for (int j = 0; j < tempRule.conditions.Count; j++)
+                    {
+                        if (tempRule.conditions[j].value != null)
+                        {
+                            file.WriteLine(tempRule.conditions[j].variable);
+                            file.WriteLine(tempRule.conditions[j].value);
+                        }
+                    }
+                    if (tempRule.logicalValue != null) file.WriteLine(tempRule.logicalValue);
+
+                    file.WriteLine(tempRule.result.variable);
+                    file.WriteLine(tempRule.result.value);
+                    file.WriteLine("=====");
+                }
+            /*    for (int i = 0; i < this.getCountOfQuestions(); i++)
+                {
+                    Question tempQ = this.getQuestionAtIndex(i);
+                    file.WriteLine(tempQ.title);
+                    file.WriteLine(tempQ.variableName);
+                    for (int j = 0; j < tempQ.answers.Count; j++)
+                        file.WriteLine(tempQ.answers.ElementAt(j));
+                    file.WriteLine("=====");
+                }*/
             }
         }
     }

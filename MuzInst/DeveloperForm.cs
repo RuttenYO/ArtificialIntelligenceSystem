@@ -12,10 +12,12 @@ namespace MuzInst
     public partial class DeveloperForm : Form
     {
         public Inquirer inquirer;
+        public RuleProcessor ruleProcessor;
 
         public DeveloperForm()
         {
             inquirer = new Inquirer();
+            ruleProcessor = new RuleProcessor();
             InitializeComponent();
             getQuestionFromFile();
             showQuestionsToCombobox();
@@ -147,12 +149,9 @@ namespace MuzInst
             }
             variable1ComboBox.SelectedIndex = 0;
 
-
             logicComboBox.Items.Add("И");
             logicComboBox.Items.Add("ИЛИ");
             logicComboBox.SelectedIndex = 0;
-
-
             
             for (int i = 0; i < inquirer.getCountOfQuestions(); i++)
             {
@@ -169,12 +168,27 @@ namespace MuzInst
                 resultVariableComboBox.Items.Add(q.variableName);
             }
             resultVariableComboBox.SelectedIndex = 0;
-
+            
+            
         }
 
         private void addRuleButton_Click(object sender, EventArgs e)
         {
+            Rule rule = new Rule(inquirer);
 
+            rule.addValueForVariable(variable1ComboBox.Text, value1ComboBox.Text);
+
+            if (!String.Equals(variable2ComboBox.Text,"НЕ ИСПОЛЬЗОВАТЬ"))
+            {
+                rule.addLogical(logicComboBox.Text);
+                rule.addValueForVariable(variable2ComboBox.Text, value2ComboBox.Text);
+            }
+
+            rule.addResult(resultVariableComboBox.Text, resultValueComboBox.Text);
+
+            ruleProcessor.AddRule(rule);
+
+            ruleProcessor.saveRulesToFile();
         }
 
         private void variable1ComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -217,7 +231,6 @@ namespace MuzInst
 
         private void resultVariableComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             Question tempQ = inquirer.getQuestionAtIndex(resultVariableComboBox.SelectedIndex);
             
             resultValueComboBox.Items.Clear();
