@@ -17,9 +17,10 @@ namespace MuzInst
         public DeveloperForm()
         {
             inquirer = new Inquirer();
-            ruleProcessor = new RuleProcessor();
             InitializeComponent();
             inquirer.getQuestionFromFile();
+            ruleProcessor = new RuleProcessor(inquirer);
+            ruleProcessor.getRulesFromFile();
             showQuestionsToCombobox();
             label1.Text = "";
             comboBox1.SelectedIndex = 0;
@@ -72,9 +73,7 @@ namespace MuzInst
             showQuestionsToCombobox();
             comboBox1.SelectedIndex = comboBox1.Items.Count-1;
         }
-
- 
-
+        
         private void button5_Click(object sender, EventArgs e)
         {
             inquirer.saveQuestionsToFile();

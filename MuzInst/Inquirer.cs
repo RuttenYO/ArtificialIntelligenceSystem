@@ -178,10 +178,13 @@ namespace MuzInst
     public class RuleProcessor
     {
         List<Rule> rules;
-        public RuleProcessor()
+        Inquirer inquirer;
+        public RuleProcessor(Inquirer inquirer)
         {
             rules = new List<Rule>();
+            this.inquirer = inquirer;
         }
+
         public void AddRule(Rule rule)
         {
             rules.Add(rule);
@@ -195,22 +198,59 @@ namespace MuzInst
                 for (int i = 0; i < rules.Count; i++)
                 {
                     Rule tempRule = rules[i];
-
+                    bool needLogical = false;
                     for (int j = 0; j < tempRule.conditions.Count; j++)
                     {
                         if (tempRule.conditions[j].value != null)
                         {
+                            if (needLogical && tempRule.logicalValue != null) file.WriteLine(tempRule.logicalValue);
                             file.WriteLine(tempRule.conditions[j].variable);
                             file.WriteLine(tempRule.conditions[j].value);
+                            needLogical = true;
                         }
-                    }
-                    if (tempRule.logicalValue != null) file.WriteLine(tempRule.logicalValue);
-
+                    }                 
                     file.WriteLine(tempRule.result.variable);
                     file.WriteLine(tempRule.result.value);
                     file.WriteLine("=====");
                 }
             }
         }
+
+        public void getRulesFromFile()
+        {
+            using (System.IO.StreamReader file = new System.IO.StreamReader(@".\Rules.db", true))
+            {
+                string tempVariable, tempValue,tempLogical;
+                Rule tempRule = new Rule(inquirer);
+
+                while (!file.EndOfStream)
+                {
+                    tempVariable = file.ReadLine();
+                    tempValue = file.ReadLine();
+
+                    tempRule.addValueForVariable(tempVariable, tempValue);
+
+                    tempLogical = file.ReadLine();
+                    if (String.Equals(tempLogical, "И") || String.Equals(tempLogical, "ИЛИ"))
+                    { 
+                        tempRule.addLogical(tempLogical);
+                        tempVariable = file.ReadLine();
+                        tempValue = file.ReadLine();
+                        tempRule.addValueForVariable(tempVariable, tempValue);
+                        tempVariable = file.ReadLine();
+                    }
+                    else
+                        tempVariable = tempLogical;
+
+                    tempValue = file.ReadLine();
+
+                    tempRule.addResult(tempVariable, tempValue);
+                    file.ReadLine();
+                    rules.Add(tempRule);
+                }
+                rules.Clear();
+            }
+        }
+
     }
 }
