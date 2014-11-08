@@ -17,41 +17,27 @@ namespace MuzInst
         {
             inquirer = new Inquirer();
             InitializeComponent();
-            getQuestionFromFile();
+            inquirer.getQuestionsFromFile();
+
+            nextQuestionAction(); 
         }
 
-        public void getQuestionFromFile()
+        public void nextQuestionAction()
         {
-            using (System.IO.StreamReader file = new System.IO.StreamReader(@".\QUIZ.db", true))
+            Question tempQ = inquirer.getQuestion();
+            if (tempQ!=null)
             {
-                string temp;
-                List<string> tempList;
-
-                tempList = new List<string>();
-                while (!file.EndOfStream)
-                {
-                    temp = file.ReadLine();
-                    if (!temp.Equals("====="))
-                    {
-                        tempList.Add(temp);
-                    }
-                    else
-                    {
-                        inquirer.addQuestion(tempList);
-                        tempList = new List<string>();
-                    }
-                }
+                comboBox1.Items.Clear();
+                label1.Text = tempQ.title;
+                for (int i = 0; i < tempQ.answers.Count; i++)
+                    comboBox1.Items.Add(tempQ.answers[i]);
+                comboBox1.SelectedIndex = 0;
             }
         }
-
+  
         private void button2_Click_1(object sender, EventArgs e)
         {
-            comboBox1.Items.Clear();
-            Question tempQ = inquirer.getQuestion();
-            label1.Text = tempQ.title;
-            for (int i = 0; i < tempQ.answers.Count; i++)
-                comboBox1.Items.Add(tempQ.answers.ElementAt(i));
-            comboBox1.Text = tempQ.answers.ElementAt(1);
+            nextQuestionAction();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -59,6 +45,11 @@ namespace MuzInst
             Form1 form1 = new Form1();
             this.Hide();
             form1.Show();
+        }
+
+        private void UserForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
 
     }
