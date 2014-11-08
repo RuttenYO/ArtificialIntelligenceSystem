@@ -18,7 +18,7 @@ namespace MuzInst
         {
             inquirer = new Inquirer();
             InitializeComponent();
-            inquirer.getQuestionFromFile();
+            inquirer.getQuestionsFromFile();
             ruleProcessor = new RuleProcessor(inquirer);
             ruleProcessor.getRulesFromFile();
             showQuestionsToCombobox();

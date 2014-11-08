@@ -84,7 +84,7 @@ namespace MuzInst
             return questions.Count;
         }
 
-        public void getQuestionFromFile()
+        public void getQuestionsFromFile()
         {
             using (System.IO.StreamReader file = new System.IO.StreamReader(@".\QUIZ.db", true))
             {
