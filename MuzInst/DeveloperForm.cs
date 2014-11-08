@@ -19,7 +19,7 @@ namespace MuzInst
             inquirer = new Inquirer();
             ruleProcessor = new RuleProcessor();
             InitializeComponent();
-            getQuestionFromFile();
+            inquirer.getQuestionFromFile();
             showQuestionsToCombobox();
             label1.Text = "";
             comboBox1.SelectedIndex = 0;
@@ -73,29 +73,7 @@ namespace MuzInst
             comboBox1.SelectedIndex = comboBox1.Items.Count-1;
         }
 
-        public void getQuestionFromFile()
-        {
-            using (System.IO.StreamReader file = new System.IO.StreamReader(@".\QUIZ.db", true))
-            {
-                string temp;
-                List<string> tempList;
-
-                tempList = new List<string>();
-                while (!file.EndOfStream)
-                {
-                    temp = file.ReadLine();
-                    if (!temp.Equals("====="))
-                    {
-                        tempList.Add(temp);
-                    }
-                    else
-                    {
-                        inquirer.addQuestion(tempList);
-                        tempList = new List<string>();
-                    }
-                }
-            }
-        }
+ 
 
         private void button5_Click(object sender, EventArgs e)
         {

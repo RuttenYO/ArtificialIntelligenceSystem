@@ -60,8 +60,7 @@ namespace MuzInst
         {
             Question tempQ = questions.ElementAt(index);
             tempQ.answers.Add(answer);
-        }
-        
+        } 
 
         public bool deleteAnswerForQuestion(Question question, string answer)
         {
@@ -85,6 +84,30 @@ namespace MuzInst
             return questions.Count;
         }
 
+        public void getQuestionFromFile()
+        {
+            using (System.IO.StreamReader file = new System.IO.StreamReader(@".\QUIZ.db", true))
+            {
+                string temp;
+                List<string> tempList;
+
+                tempList = new List<string>();
+                while (!file.EndOfStream)
+                {
+                    temp = file.ReadLine();
+                    if (!temp.Equals("====="))
+                    {
+                        tempList.Add(temp);
+                    }
+                    else
+                    {
+                        addQuestion(tempList);
+                        tempList = new List<string>();
+                    }
+                }
+            }
+        }
+
         public void saveQuestionsToFile()
         {
             System.IO.File.WriteAllText(@".\QUIZ.db", string.Empty);
@@ -100,8 +123,7 @@ namespace MuzInst
                     file.WriteLine("=====");
                 }
             }
-        }
-    
+        } 
     }
 
     public class Rule
