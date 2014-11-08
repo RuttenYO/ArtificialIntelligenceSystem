@@ -188,15 +188,6 @@ namespace MuzInst
                     file.WriteLine(tempRule.result.value);
                     file.WriteLine("=====");
                 }
-            /*    for (int i = 0; i < this.getCountOfQuestions(); i++)
-                {
-                    Question tempQ = this.getQuestionAtIndex(i);
-                    file.WriteLine(tempQ.title);
-                    file.WriteLine(tempQ.variableName);
-                    for (int j = 0; j < tempQ.answers.Count; j++)
-                        file.WriteLine(tempQ.answers.ElementAt(j));
-                    file.WriteLine("=====");
-                }*/
             }
         }
     }
