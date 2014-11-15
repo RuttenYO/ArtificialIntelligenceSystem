@@ -12,6 +12,7 @@ namespace MuzInst
     public partial class UserForm : Form
     {
         Inquirer inquirer;
+        RuleProcessor ruleProcessor;
 
         List<RuleStruct> answers;
 
@@ -19,9 +20,12 @@ namespace MuzInst
 
         public UserForm()
         {
-            inquirer = new Inquirer();
             InitializeComponent();
+            inquirer = new Inquirer();
             inquirer.getQuestionsFromFile();
+
+            ruleProcessor = new RuleProcessor(inquirer);
+            ruleProcessor.getRulesFromFile();
 
             answers = new List<RuleStruct>();
 
@@ -73,6 +77,11 @@ namespace MuzInst
         private void UserForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ruleProcessor.getConclusionWithUserAnswers(answers);
         }
 
     }
