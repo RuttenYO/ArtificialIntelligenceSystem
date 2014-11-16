@@ -84,5 +84,10 @@ namespace MuzInst
             ruleProcessor.getConclusionWithUserAnswers(answers);
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            nextQuestionAction();
+        }
+
     }
 }
