@@ -166,6 +166,7 @@ namespace MuzInst
             ruleProcessor.AddRule(rule);
 
             ruleProcessor.saveRulesToFile();
+            MessageBox.Show("Правило добавлено в базу правил");
         }
 
         private void variable1ComboBox_SelectedIndexChanged(object sender, EventArgs e)

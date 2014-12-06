@@ -81,7 +81,13 @@ namespace MuzInst
 
         private void button3_Click(object sender, EventArgs e)
         {
-            ruleProcessor.getConclusionWithUserAnswers(answers);
+            List<RuleStruct> results = ruleProcessor.getConclusionWithUserAnswers(answers);
+            string message = "Результаты:\n";
+            foreach (RuleStruct answer in results)
+            {
+                message += answer.variable.ToString() + "==" + answer.value.ToString() + ";\n";
+            }
+            MessageBox.Show(message);
         }
 
         private void button4_Click(object sender, EventArgs e)

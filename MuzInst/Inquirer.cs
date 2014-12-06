@@ -130,13 +130,13 @@ namespace MuzInst
     {
         public string variable;
         public string value;
-        public static bool operator ==(RuleStruct firstStruct, RuleStruct secondStruct)
+        public static bool operator == (RuleStruct firstStruct, RuleStruct secondStruct)
         {
             if (String.Equals(firstStruct.value, secondStruct.value) && String.Equals(firstStruct.variable, secondStruct.variable))
                 return true;
             return false;
         }
-        public static bool operator !=(RuleStruct firstStruct, RuleStruct secondStruct)
+        public static bool operator != (RuleStruct firstStruct, RuleStruct secondStruct)
         {
             return !(firstStruct == secondStruct);
         }
@@ -222,9 +222,9 @@ namespace MuzInst
                     bool needLogical = false;
                     for (int j = 0; j < tempRule.conditions.Count; j++)
                     {
-                        if (tempRule.conditions[j].value != null)
+                        if (tempRule.conditions[j].value != "")
                         {
-                            if (needLogical && tempRule.logicalValue != null) file.WriteLine(tempRule.logicalValue);
+                            if (needLogical && tempRule.logicalValue != "") file.WriteLine(tempRule.logicalValue);
                             file.WriteLine(tempRule.conditions[j].variable);
                             file.WriteLine(tempRule.conditions[j].value);
                             needLogical = true;

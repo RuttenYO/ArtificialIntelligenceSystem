@@ -249,7 +249,7 @@
             // resultValueComboBox
             // 
             this.resultValueComboBox.FormattingEnabled = true;
-            this.resultValueComboBox.Location = new System.Drawing.Point(638, 36);
+            this.resultValueComboBox.Location = new System.Drawing.Point(657, 36);
             this.resultValueComboBox.Name = "resultValueComboBox";
             this.resultValueComboBox.Size = new System.Drawing.Size(74, 21);
             this.resultValueComboBox.TabIndex = 33;
@@ -258,7 +258,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label9.Location = new System.Drawing.Point(619, 39);
+            this.label9.Location = new System.Drawing.Point(628, 39);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(13, 13);
             this.label9.TabIndex = 32;
